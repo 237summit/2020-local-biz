@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: private-registry
+spec:
+  containers:
+  - name: private-registry-test
+    image: docker.example.com/nginx
+  imagePullSecrets:
+  - name: credentials

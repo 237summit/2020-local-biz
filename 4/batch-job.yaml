@@ -1,0 +1,14 @@
+apiVersion: batch/v1 
+kind: Job 
+metadata:
+  name: batch-job
+spec: 
+  template:
+    metadata:
+      labels: 
+        app: batch-app
+    spec:
+      containers:
+      - name: sleep-container
+        image: smlinux/batch-job
+      restartPolicy: OnFailure 

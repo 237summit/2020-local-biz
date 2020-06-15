@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stressful
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stress
+  template:
+    metadata:
+      labels:
+        app: stress
+    spec:
+      nodeName: node3.example.com
+      containers:
+      - image: smlinux/vish-stress
+        name: stress-container
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "500Mi"
+          requests:
+            cpu: "0.1"
+            memory: "250Mi"
+        args:
+        - -cpus
+        - "1"
+        - -mem-total
+        - "100Mi"
+        - -mem-alloc-size
+        - "100Mi"
+        - -mem-alloc-sleep
+        - "1s"
