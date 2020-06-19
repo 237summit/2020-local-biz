@@ -1,0 +1,8 @@
+      containers:
+      - name: metrics-server
+        image: gcr.io/k8s-staging-metrics-server/metrics-server:master
+        imagePullPolicy: IfNotPresent
+        command:
+        - ./metrics-server
+        - --kubelet-insecure-tls
+        - --kubelet-preferred-address-types=InternalIP
