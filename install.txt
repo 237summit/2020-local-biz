@@ -44,3 +44,31 @@ yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 systemctl start kubelet
 systemctl enable kubelet
+
+
+
+##Creating a single control-plane cluster with kubeadm
+##3. Master (Initializing your control-plane node)
+
+kubeadm init
+
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+cat > token.txt
+kubeadm join xxxxxxxxxx
+
+
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+
+
+##4. worker node
+node1# kubeadm join masterIP:6443  --token xxx -ca ....
+node2# kubeadm join masterIP:6443  --token xxx -ca ....
+node3# kubeadm join masterIP:6443  --token xxx -ca ....
+
+
+M# kubectl get nodes
+
+
