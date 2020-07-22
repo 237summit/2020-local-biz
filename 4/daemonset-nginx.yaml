@@ -11,7 +11,7 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
+        app: web
         version: "1.14"
     spec:
       containers:
