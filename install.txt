@@ -72,3 +72,4 @@ node3# kubeadm join masterIP:6443  --token xxx -ca ....
 M# kubectl get nodes
 
 
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user| awk '{print $1}')
